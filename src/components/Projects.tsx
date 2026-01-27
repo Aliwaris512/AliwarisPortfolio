@@ -68,7 +68,7 @@ export default function Projects() {
                         {projects.map((project, index) => (
                             <motion.div
                                 key={index}
-                                className="min-w-[400px] group relative bg-foreground/5 rounded-xl overflow-hidden border border-foreground/10 hover:border-accent/50 transition-all duration-300"
+                                className="min-w-[85vw] md:min-w-[400px] group relative bg-foreground/5 rounded-xl overflow-hidden border border-foreground/10 hover:border-accent/50 transition-all duration-300"
                                 whileHover={{ scale: 1.02, y: -10 }}
                             >
                                 {/* Image Placeholder */}

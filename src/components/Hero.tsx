@@ -45,7 +45,7 @@ export default function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-6xl md:text-8xl font-bold mb-6 tracking-tight text-foreground"
+                    className="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 tracking-tight text-foreground"
                 >
                     Web
                     <span className="block text-foreground/50">Developer</span>
