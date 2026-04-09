@@ -19,13 +19,13 @@ const projects = [
         links: { demo: "https://seniorthrive.com/", git: "https://github.com/Aliwaris512" },
         image: "/seniorthrive.png"
     },
-    {
-        title: "The 95 Star",
-        description: "Airport shuttle service app. Designed reusable components and built a responsive UI for a seamless user experience.",
-        tags: ["Vue.js", "Node.js", "Shuttle Service", "Frontend"],
-        links: { demo: "https://www.the95star.com/", git: "https://github.com/Aliwaris512" },
-        image: "/the95star.png"
-    },
+    // {
+    //     title: "The 95 Star",
+    //     description: "Airport shuttle service app. Designed reusable components and built a responsive UI for a seamless user experience.",
+    //     tags: ["Vue.js", "Node.js", "Shuttle Service", "Frontend"],
+    //     links: { demo: "https://www.the95star.com/", git: "https://github.com/Aliwaris512" },
+    //     image: "/the95star.png"
+    // },
     {
         title: "Student Portal - Superior University",
         description: "University portal for managing student data (Student & Teacher Dashboards). Features role-based access, JWT auth, and REST API integration.",
