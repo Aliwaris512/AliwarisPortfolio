@@ -3,18 +3,18 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "JavaScript (ES6+)", logo: "/logos/javascript.png" },
-  { name: "TypeScript", logo: "/logos/typescript.png" },
-  { name: "React", logo: "/logos/react.png" },
-  { name: "Next.js", logo: "/logos/nextjs.png" },
-  { name: "Vue.js", logo: "/logos/vue.png" },
-  { name: "Node.js", logo: "/logos/nodejs.png" },
-  { name: "Python", logo: "/logos/python.png" },
-  { name: "C++", logo: "/logos/cpp.png" },
-  { name: "Tailwind CSS", logo: "/logos/tailwind.png" },
-  { name: "MySQL", logo: "/logos/mysql.png" },
-  { name: "React Native", logo: "/logos/react-native.png" },
-  { name: "Git", logo: "/logos/git.png" },
+  { name: "JavaScript (ES6+)", logo: "/logos/javascript.svg" },
+  { name: "TypeScript", logo: "/logos/typescript.svg" },
+  { name: "React", logo: "/logos/react.svg" },
+  { name: "Next.js", logo: "/logos/nextjs.svg" },
+  { name: "Vue.js", logo: "/logos/vue.svg" },
+  { name: "Node.js", logo: "/logos/nodejs.svg" },
+  { name: "Python", logo: "/logos/python.svg" },
+  { name: "C++", logo: "/logos/cpp.svg" },
+  { name: "Tailwind CSS", logo: "/logos/tailwind.svg" },
+  { name: "MySQL", logo: "/logos/mysql.svg" },
+  { name: "React Native", logo: "/logos/react-native.svg" },
+  { name: "Git", logo: "/logos/git.svg" },
 ];
 
 const education = [
