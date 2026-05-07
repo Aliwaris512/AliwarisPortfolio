@@ -3,9 +3,18 @@
 import { motion } from "framer-motion";
 
 const skills = [
-    "JavaScript (ES6+)", "TypeScript", "React", "Next.js", "Vue.js",
-    "Node.js", "Python", "C++", "Tailwind CSS", "MySQL",
-    "React Native", "Git"
+  { name: "JavaScript (ES6+)", logo: "/logos/javascript.png" },
+  { name: "TypeScript", logo: "/logos/typescript.png" },
+  { name: "React", logo: "/logos/react.png" },
+  { name: "Next.js", logo: "/logos/nextjs.png" },
+  { name: "Vue.js", logo: "/logos/vue.png" },
+  { name: "Node.js", logo: "/logos/nodejs.png" },
+  { name: "Python", logo: "/logos/python.png" },
+  { name: "C++", logo: "/logos/cpp.png" },
+  { name: "Tailwind CSS", logo: "/logos/tailwind.png" },
+  { name: "MySQL", logo: "/logos/mysql.png" },
+  { name: "React Native", logo: "/logos/react-native.png" },
+  { name: "Git", logo: "/logos/git.png" },
 ];
 
 const education = [
