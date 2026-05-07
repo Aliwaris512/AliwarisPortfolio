@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-import Image from "next/image";
 
 const projects = [
     {
@@ -43,6 +43,8 @@ const projects = [
 ];
 
 export default function Projects() {
+    const [flipped, setFlipped] = useState<number | null>(null);
+
     return (
         <section id="projects" className="py-24 bg-background relative overflow-hidden">
             <div className="container mx-auto px-6">
@@ -55,7 +57,7 @@ export default function Projects() {
                 >
                     <h2 className="text-4xl md:text-5xl font-bold mb-4">Selected Work</h2>
                     <div className="h-1 w-20 bg-accent rounded-full"></div>
-                    <p className="mt-4 text-foreground/70">Drag to explore</p>
+                    <p className="mt-4 text-foreground/70">Click a card to flip it and learn more.</p>
                 </motion.div>
 
                 {/* Carousel Container */}
@@ -65,45 +67,92 @@ export default function Projects() {
                         dragConstraints={{ right: 0, left: -((projects.length * 450) - 1000) }} // Approx width calc
                         className="flex space-x-8 pb-10"
                     >
-                        {projects.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                className="min-w-[85vw] md:min-w-[400px] group relative bg-foreground/5 rounded-xl overflow-hidden border border-foreground/10 hover:border-accent/50 transition-all duration-300"
-                                whileHover={{ scale: 1.02, y: -10 }}
-                            >
-                                {/* Image Placeholder */}
-                                <div className="relative h-64 w-full bg-gray-900 overflow-hidden">
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
-                                    <img
-                                        src={project.image}
-                                        alt={project.title}
-                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
-                                    />
-                                </div>
+                        {projects.map((project, index) => {
+                            const isFlipped = flipped === index;
 
-                                <div className="p-8 relative z-20">
-                                    <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors">{project.title}</h3>
-                                    <p className="text-foreground/70 mb-6 line-clamp-2">{project.description}</p>
+                            return (
+                                <motion.div
+                                    key={index}
+                                    className="min-w-[85vw] md:min-w-[400px] group relative min-h-[680px]"
+                                    whileHover={{ scale: 1.02, y: -10 }}
+                                    style={{ perspective: 1200 }}
+                                >
+                                    <motion.div
+                                        onClick={() => setFlipped(isFlipped ? null : index)}
+                                        className="relative h-full w-full cursor-pointer"
+                                        style={{ transformStyle: "preserve-3d" }}
+                                        animate={{ rotateY: isFlipped ? 180 : 0 }}
+                                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                                    >
+                                        <div className="absolute inset-0 rounded-xl overflow-hidden border border-foreground/10 bg-foreground/5 shadow-xl"
+                                            style={{ backfaceVisibility: "hidden" }}
+                                        >
+                                            <div className="relative h-64 w-full bg-gray-900 overflow-hidden">
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10" />
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.title}
+                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100"
+                                                />
+                                            </div>
 
-                                    <div className="flex flex-wrap gap-2 mb-8">
-                                        {project.tags.map(tag => (
-                                            <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-foreground/5 text-foreground/80 border border-foreground/10">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
+                                            <div className="p-8 relative z-20">
+                                                <h3 className="text-2xl font-bold mb-3 text-foreground group-hover:text-accent transition-colors">{project.title}</h3>
+                                                <p className="text-foreground/70 mb-6 line-clamp-2">{project.description}</p>
 
-                                    <div className="flex items-center space-x-4">
-                                        <a href={project.links.demo} className="flex items-center text-sm font-bold text-foreground hover:text-accent transition-colors">
-                                            <ExternalLink size={18} className="mr-2" /> Live Demo
-                                        </a>
-                                        <a href={project.links.git} className="flex items-center text-sm font-bold text-foreground hover:text-accent transition-colors">
-                                            <Github size={18} className="mr-2" /> GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
+                                                <div className="flex flex-wrap gap-2 mb-8">
+                                                    {project.tags.map(tag => (
+                                                        <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-foreground/5 text-foreground/80 border border-foreground/10">
+                                                            {tag}
+                                                        </span>
+                                                    ))}
+                                                </div>
+
+                                                <div className="flex items-center space-x-4">
+                                                    <a href={project.links.demo} className="flex items-center text-sm font-bold text-foreground hover:text-accent transition-colors">
+                                                        <ExternalLink size={18} className="mr-2" /> Live Demo
+                                                    </a>
+                                                    <a href={project.links.git} className="flex items-center text-sm font-bold text-foreground hover:text-accent transition-colors">
+                                                        <Github size={18} className="mr-2" /> GitHub
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div className="absolute inset-0 rounded-xl overflow-hidden border border-foreground/10 bg-background/95 shadow-xl px-8 py-8 text-foreground"
+                                            style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+                                        >
+                                            <div className="h-full flex flex-col justify-between">
+                                                <div>
+                                                    <h3 className="text-2xl font-bold mb-4">About this project</h3>
+                                                    <p className="text-foreground/70 mb-6 leading-relaxed">{project.description}</p>
+                                                    <div className="space-y-3 text-sm text-foreground/70">
+                                                        <p><span className="font-semibold text-foreground">Stack:</span> {project.tags.join(", ")}</p>
+                                                        <p><span className="font-semibold text-foreground">Focus:</span> {project.title.includes("Portal") ? "Authentication & role-based dashboard" : project.title.includes("Tracker") ? "Finance UI & state management" : "Responsive UI, API integration, and performance"}</p>
+                                                    </div>
+                                                </div>
+
+                                                <div className="mt-8 flex flex-col gap-3">
+                                                    <a href={project.links.demo} className="inline-flex items-center justify-center rounded-full border border-accent px-4 py-3 text-sm font-semibold text-accent hover:bg-accent/10 transition-colors">
+                                                        View Demo
+                                                    </a>
+                                                    <a href={project.links.git} className="inline-flex items-center justify-center rounded-full border border-foreground/10 px-4 py-3 text-sm font-semibold text-foreground hover:border-accent hover:text-accent transition-colors">
+                                                        View Code
+                                                    </a>
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => setFlipped(null)}
+                                                        className="mt-2 text-sm text-foreground/70 hover:text-accent underline"
+                                                    >
+                                                        Back to card
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </motion.div>
+                            );
+                        })}
                     </motion.div>
                 </motion.div>
             </div>
