@@ -47,8 +47,8 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 tracking-tight text-foreground"
                 >
-                    Web
-                    <span className="block text-foreground/50">Developer</span>
+                    Full
+                    <span className="block text-foreground/50">Stack Developer</span>
                 </motion.h1>
 
                 <motion.p
@@ -57,7 +57,7 @@ export default function Hero() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     className="text-xl md:text-2xl text-foreground/60 max-w-2xl mx-auto mb-10"
                 >
-                    Building clean, scalable web apps &amp; solving real-world problems.
+                    Building scalable, high-performance web applications with React, Vue, Node, and Python.
                 </motion.p>
 
                 <motion.div

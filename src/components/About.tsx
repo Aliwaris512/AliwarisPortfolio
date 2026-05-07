@@ -17,21 +17,25 @@ const skills = [
   { name: "Git", logo: "/logos/git.svg" },
 ];
 
+const experience = [
+  {
+    role: "Associate Software Engineer",
+    company: "CodeSuite",
+    period: "May 2025 – Present",
+    bullets: [
+      "Develop and maintain scalable web applications using React.js and Vue.js.",
+      "Build responsive user interfaces with Tailwind CSS, HTML, and CSS.",
+      "Integrate REST APIs and collaborate with backend teams using Node.js, FastAPI, and Django.",
+      "Optimize application performance and improve cross-browser compatibility.",
+    ],
+  },
+];
+
 const education = [
   {
     school: "Superior University",
-    degree: "Bachelors in Robotics",
+    degree: "BS in Robotics",
     year: "2023 - 2027",
-  },
-  {
-    school: "Ripha College",
-    degree: "Intermediate in Computer Science",
-    year: "2021 - 2023",
-  },
-  {
-    school: "Allied School",
-    degree: "Matric in Computer",
-    year: "2019 - 2021",
   },
 ];
 
@@ -61,7 +65,6 @@ export default function About() {
               />
             </div>
 
-            {/* Decorative blobs */}
             <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10" />
             <div className="absolute -top-8 -left-8 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl -z-10" />
           </motion.div>
@@ -79,45 +82,74 @@ export default function About() {
             </h2>
 
             <p className="text-base sm:text-lg md:text-xl text-foreground/80 mb-5 leading-relaxed">
-              I am a motivated and detail-oriented computer science student at
-              Superior University with a strong passion for learning new
-              technologies and solving real-world problems.
+              Associate Full Stack Developer with 1+ years of professional experience building scalable, high-performance applications.
+            </p>
+
+            <p className="text-sm sm:text-base text-foreground/70 mb-6 leading-relaxed">
+              I specialize in modern frontend development with React.js, Vue.js, HTML, CSS, and Tailwind CSS, while also delivering robust backend solutions using Node.js, Python FastAPI, and Django.
             </p>
 
             <p className="text-sm sm:text-base text-foreground/70 mb-8 leading-relaxed">
-              I enjoy working on hands-on projects involving web development,
-              robotics, and software engineering. My experience involves
-              building frontend applications using modern frameworks like Vue.js
-              and React.
+              My work focuses on clean architecture, responsive interfaces, API integrations, and performance optimization for production-ready web applications.
             </p>
 
-            {/* Education */}
+            <div className="grid gap-4 sm:grid-cols-2 mb-10">
+              <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-5">
+                <h3 className="font-semibold text-lg mb-4">Frontend & Mobile</h3>
+                <ul className="space-y-2 text-foreground/70 text-sm">
+                  <li>React, Next.js, Vue.js, React Native</li>
+                  <li>TypeScript, JavaScript, HTML, CSS, Tailwind</li>
+                  <li>Expo, Bootstrap, Responsive Design</li>
+                </ul>
+              </div>
+
+              <div className="rounded-3xl border border-foreground/10 bg-foreground/5 p-5">
+                <h3 className="font-semibold text-lg mb-4">Backend & Data</h3>
+                <ul className="space-y-2 text-foreground/70 text-sm">
+                  <li>Node.js, Express, REST APIs, GraphQL</li>
+                  <li>Python, FastAPI, Django</li>
+                  <li>MySQL, JWT Authentication, API Integration</li>
+                </ul>
+              </div>
+            </div>
+
             <div className="mb-10">
-              <h3 className="text-lg font-semibold mb-4">Education</h3>
-              <div className="space-y-4">
-                {education.map((edu, index) => (
-                  <div
-                    key={index}
-                    className="border-l-2 border-accent/20 pl-4"
-                  >
-                    <h4 className="font-medium">{edu.school}</h4>
-                    <p className="text-sm text-foreground/70">
-                      {edu.degree}
-                    </p>
-                    <p className="text-xs text-accent">
-                      {edu.year}
-                    </p>
+              <h3 className="text-lg font-semibold mb-4">Professional Experience</h3>
+              <div className="space-y-6">
+                {experience.map((item, index) => (
+                  <div key={index} className="rounded-3xl border border-foreground/10 bg-foreground/5 p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
+                      <div>
+                        <h4 className="text-xl font-semibold text-foreground">{item.role}</h4>
+                        <p className="text-sm text-foreground/70">{item.company}</p>
+                      </div>
+                      <p className="text-sm text-accent">{item.period}</p>
+                    </div>
+                    <ul className="list-disc pl-5 space-y-2 text-foreground/70 text-sm">
+                      {item.bullets.map((bullet, bulletIndex) => (
+                        <li key={bulletIndex}>{bullet}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Skills Marquee */}
-            <div className="overflow-hidden">
-              <h3 className="text-lg font-semibold mb-4">
-                Tech Stack & Tools
-              </h3>
+            <div className="mb-10">
+              <h3 className="text-lg font-semibold mb-4">Education</h3>
+              <div className="border-l-2 border-accent/20 pl-4">
+                {education.map((edu, index) => (
+                  <div key={index} className="mb-4">
+                    <h4 className="font-medium text-foreground">{edu.school}</h4>
+                    <p className="text-sm text-foreground/70">{edu.degree}</p>
+                    <p className="text-xs text-accent">{edu.year}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
+            <div className="overflow-hidden">
+              <h3 className="text-lg font-semibold mb-4">Tech Stack & Tools</h3>
               <motion.div
                 className="flex gap-3 w-max"
                 animate={{ x: ["0%", "-50%"] }}
@@ -143,7 +175,6 @@ export default function About() {
               </motion.div>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

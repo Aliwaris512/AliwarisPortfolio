@@ -8,8 +8,8 @@ import SmoothScroll from "@/components/SmoothScroll";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-    title: "Ali Waris | Web Developer",
-    description: "Portfolio of Ali Waris, a Web Developer building clean, scalable web apps.",
+    title: "Ali Waris | Associate Full Stack Developer",
+    description: "Portfolio of Ali Waris, Associate Full Stack Developer specializing in React, Vue, Node.js, FastAPI, and scalable web applications.",
 };
 
 import { Providers } from "./providers";
