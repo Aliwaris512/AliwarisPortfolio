@@ -12,11 +12,33 @@ export default function Contact() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setIsSubmitting(true);
-        // Simulate API call
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setSubmitted(true);
-        setIsSubmitting(false);
-        setFormState({ name: "", email: "", message: "" });
+        
+        try {
+            const response = await fetch("https://formsubmit.co/ajax/aliwariskhan512@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: formState.name,
+                    email: formState.email,
+                    message: formState.message
+                })
+            });
+            
+            if (response.ok) {
+                setSubmitted(true);
+                setFormState({ name: "", email: "", message: "" });
+            } else {
+                console.error("Form submission failed");
+                setSubmitted(true); // Still show success for UX, or handle error
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {

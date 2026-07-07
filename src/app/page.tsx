@@ -9,6 +9,7 @@ import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import Loader from "@/components/Loader";
+import GitHubStats from "@/components/GitHubStats";
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ export default function Home() {
                 <Hero />
                 <About />
                 <Projects />
+                <GitHubStats />
                 <Services />
                 <Contact />
                 <Footer />

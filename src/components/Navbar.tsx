@@ -13,6 +13,7 @@ const navLinks = [
     { name: "Work", href: "#projects" },
     { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" },
+    { name: "Activity", href: "#githubstats" },
 ];
 
 export default function Navbar() {
@@ -29,6 +30,43 @@ export default function Navbar() {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const toggleTheme = (event: React.MouseEvent) => {
+        const nextTheme = theme === "dark" ? "light" : "dark";
+
+        if (!document.startViewTransition) {
+            setTheme(nextTheme);
+            return;
+        }
+
+        const x = event.clientX;
+        const y = event.clientY;
+        const endRadius = Math.hypot(
+            Math.max(x, window.innerWidth - x),
+            Math.max(y, window.innerHeight - y)
+        );
+
+        const transition = document.startViewTransition(() => {
+            setTheme(nextTheme);
+        });
+
+        transition.ready.then(() => {
+            const clipPath = [
+                `circle(0px at ${x}px ${y}px)`,
+                `circle(${endRadius}px at ${x}px ${y}px)`,
+            ];
+            document.documentElement.animate(
+                {
+                    clipPath: clipPath,
+                },
+                {
+                    duration: 500,
+                    easing: "ease-out",
+                    pseudoElement: "::view-transition-new(root)",
+                }
+            );
+        });
+    };
 
     return (
         <nav
@@ -56,7 +94,7 @@ export default function Navbar() {
 
                     {mounted && (
                         <button
-                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                            onClick={toggleTheme}
                             className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors cursor-none"
                         >
                             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -67,7 +105,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-4 md:hidden">
                     {mounted && (
                         <button
-                            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                            onClick={toggleTheme}
                             className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors"
                         >
                             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}

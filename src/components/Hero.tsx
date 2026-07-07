@@ -64,12 +64,22 @@ export default function Hero() {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
+                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
                 >
                     <a
                         href="#projects"
                         className="inline-block border border-accent text-accent px-8 py-3 rounded-full hover:bg-accent hover:text-background transition-all duration-300 font-medium text-lg"
                     >
                         View My Work
+                    </a>
+                    <a
+                        href="/cv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        download="Ali_Waris_CV.pdf"
+                        className="inline-block bg-accent text-background border border-accent px-8 py-3 rounded-full hover:bg-transparent hover:text-accent transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-accent/20"
+                    >
+                        Download CV
                     </a>
                 </motion.div>
             </div>

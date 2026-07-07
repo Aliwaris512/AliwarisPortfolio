@@ -46,7 +46,7 @@ export default function About() {
       className="py-16 md:py-24 bg-background relative overflow-hidden"
     >
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-16">
 
           {/* Image / Visual */}
           <motion.div
@@ -54,10 +54,9 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="w-full lg:w-1/2 relative order-1"
+            className="w-full lg:w-2/5 relative lg:sticky lg:top-28 shrink-0"
           >
             <div className="aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-800 relative z-10 border border-white/10 max-w-xs sm:max-w-sm mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 to-transparent mix-blend-overlay z-20" />
               <img
                 src="/profile.jpg"
                 alt="Ali Waris"
@@ -75,7 +74,7 @@ export default function About() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6 }}
-            className="w-full lg:w-1/2 order-2"
+            className="w-full flex-1 min-w-0"
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">
               About Me
