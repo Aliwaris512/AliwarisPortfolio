@@ -95,6 +95,7 @@ export default function Navbar() {
                     {mounted && (
                         <button
                             onClick={toggleTheme}
+                            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                             className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors cursor-none"
                         >
                             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -106,6 +107,7 @@ export default function Navbar() {
                     {mounted && (
                         <button
                             onClick={toggleTheme}
+                            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
                             className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors"
                         >
                             {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
@@ -114,6 +116,7 @@ export default function Navbar() {
 
                     {/* Mobile Toggle */}
                     <button
+                        aria-label={isOpen ? "Close menu" : "Open menu"}
                         className="text-foreground hover:text-accent transition-colors"
                         onClick={() => setIsOpen(!isOpen)}
                     >

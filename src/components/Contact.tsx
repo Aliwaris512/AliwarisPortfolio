@@ -89,10 +89,10 @@ export default function Contact() {
                             <div>
                                 <h3 className="text-xl font-bold mb-2 text-foreground">Socials</h3>
                                 <div className="flex space-x-4">
-                                    <a href="https://x.com/Aliwaris0505" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Twitter size={20} /></a>
-                                    <a href="https://www.linkedin.com/in/ali-waris-b1a9ab318/" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Linkedin size={20} /></a>
-                                    <a href="https://www.instagram.com/yeah._.itz_ali?igsh=dHY4eDB1eTRnZnQ1" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Instagram size={20} /></a>
-                                    <a href="https://github.com/Aliwaris512" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Github size={20} /></a>
+                                    <a href="https://x.com/Aliwaris0505" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Twitter size={20} /><span className="sr-only">X (Twitter)</span></a>
+                                    <a href="https://www.linkedin.com/in/ali-waris-b1a9ab318/" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Linkedin size={20} /><span className="sr-only">LinkedIn</span></a>
+                                    <a href="https://www.instagram.com/yeah._.itz_ali?igsh=dHY4eDB1eTRnZnQ1" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Instagram size={20} /><span className="sr-only">Instagram</span></a>
+                                    <a href="https://github.com/Aliwaris512" target="_blank" rel="noopener noreferrer" className="text-foreground/70 hover:text-accent transition-colors"><Github size={20} /><span className="sr-only">GitHub</span></a>
                                 </div>
                             </div>
                         </div>
