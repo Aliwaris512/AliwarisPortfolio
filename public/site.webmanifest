@@ -1,0 +1,15 @@
+{
+  "name": "Ali Waris - Full Stack Developer Portfolio",
+  "short_name": "Ali Waris",
+  "description": "Portfolio of Ali Waris, Associate Full Stack Developer specializing in React, Vue, Node.js, FastAPI, and scalable web applications.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0b0b",
+  "theme_color": "#00ffcc",
+  "orientation": "portrait-primary",
+  "categories": ["portfolio", "development", "technology"],
+  "icons": [
+    { "src": "/favicon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

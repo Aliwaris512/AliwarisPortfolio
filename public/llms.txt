@@ -1,0 +1,38 @@
+# Ali Waris | Associate Full Stack Developer
+
+> Portfolio of Ali Waris, a Full Stack Developer specializing in React, Vue, Node.js, FastAPI, and scalable web applications. Based in Lahore, Pakistan.
+
+## Navigation
+
+- [Home](https://aliwaris.netlify.app/)
+- [About](https://aliwaris.netlify.app/#about)
+- [Projects](https://aliwaris.netlify.app/#projects)
+- [Services](https://aliwaris.netlify.app/#services)
+- [Contact](https://aliwaris.netlify.app/#contact)
+- [GitHub Activity](https://aliwaris.netlify.app/#githubstats)
+- [Download CV](https://aliwaris.netlify.app/cv.pdf)
+
+## Projects
+
+- [Moodflik](https://www.moodflik.com/) - Full-stack web & mobile application for personalized content engagement. Built with responsive UIs and integrated APIs.
+- [SeniorThrive](https://seniorthrive.com/) - Healthcare SaaS platform supporting senior wellness with dashboard workflows, questionnaires, and profile management.
+- [Nexus E-Commerce](https://github.com/Aliwaris512) - Modern headless e-commerce storefront with real-time inventory tracking, Stripe payments, and animated product showcases.
+- [Student Portal - Superior University](https://github.com/Aliwaris512) - University portal with student/teacher dashboards, role-based access, JWT auth, and REST API integration.
+- [Taskify Kanban](https://github.com/Aliwaris512) - Collaborative workflow management with drag-and-drop interfaces, real-time sync, and team permissions.
+- [Expense Tracker](https://github.com/Aliwaris512) - Expense tracking app built with Vue 3 Composition API and reactive state management.
+- [AI Code Companion](https://github.com/Aliwaris512) - AI-powered developer tool for automatic code formatting and boilerplate generation in the browser.
+
+## Social
+
+- [GitHub](https://github.com/Aliwaris512)
+- [LinkedIn](https://www.linkedin.com/in/ali-waris-b1a9ab318/)
+- [X / Twitter](https://x.com/Aliwaris0505)
+- [Instagram](https://www.instagram.com/yeah._.itz_ali)
+- [Email](mailto:aliwariskhan512@gmail.com)
+
+## Tech Stack
+
+- **Frontend:** React, Next.js, Vue.js, TypeScript, JavaScript, Tailwind CSS, HTML, CSS, React Native
+- **Backend:** Node.js, Express, Python, FastAPI, Django, REST APIs, GraphQL
+- **Database & Auth:** MySQL, JWT Authentication
+- **Tools:** Git, Postman, Figma, VS Code
