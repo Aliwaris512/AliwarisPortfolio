@@ -11,9 +11,9 @@ const navLinks = [
     { name: "Home", href: "#hero" },
     { name: "About", href: "#about" },
     { name: "Work", href: "#projects" },
+    { name: "Activity", href: "#githubstats" },
     { name: "Services", href: "#services" },
     { name: "Contact", href: "#contact" },
-    { name: "Activity", href: "#githubstats" },
 ];
 
 export default function Navbar() {

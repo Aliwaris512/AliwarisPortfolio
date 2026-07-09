@@ -56,16 +56,36 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="w-full lg:w-2/5 relative lg:sticky lg:top-28 shrink-0"
           >
-            <div className="aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-800 relative z-10 border border-white/10 max-w-xs sm:max-w-sm mx-auto">
-              <img
-                src="/profile.jpg"
-                alt="Ali Waris"
-                className="w-full h-full object-cover"
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="max-w-xs sm:max-w-sm mx-auto relative group"
+            >
+              <div
+                className="absolute -inset-[2px] bg-gradient-to-r from-accent via-blue-500 via-purple-500 to-accent rounded-2xl opacity-50 group-hover:opacity-75 blur-[3px] transition-opacity duration-500 bg-[length:200%_200%] animate-border-rotate"
               />
-            </div>
 
-            <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10" />
-            <div className="absolute -top-8 -left-8 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl -z-10" />
+              <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gray-800 z-10 ring-1 ring-white/10">
+                <motion.img
+                  src="/profile.jpg"
+                  alt="Ali Waris"
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.08 }}
+                  transition={{ duration: 0.4 }}
+                />
+              </div>
+            </motion.div>
+
+            <motion.div
+              animate={{ scale: [1, 1.12, 1], rotate: [0, 3, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              className="absolute -bottom-8 -right-8 w-48 h-48 bg-accent/5 rounded-full blur-3xl -z-10"
+            />
+            <motion.div
+              animate={{ scale: [1, 1.12, 1], rotate: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 0.5 }}
+              className="absolute -top-8 -left-8 w-48 h-48 bg-blue-500/5 rounded-full blur-3xl -z-10"
+            />
           </motion.div>
 
           {/* Text Content */}
