@@ -94,7 +94,7 @@ export default function GitHubStats() {
                     </div>
                     <div className="w-full overflow-x-auto">
                         <img
-                            src={`https://ghchart.rshah.org/10b981/${username}`}
+                            src={`https://ghchart.rshah.org/C9956A/${username}`}
                             alt={`${username}'s GitHub contribution chart`}
                             className="w-full min-w-[600px] rounded-xl"
                             style={{ filter: "brightness(1.15) saturate(1.3)" }}
@@ -106,7 +106,7 @@ export default function GitHubStats() {
                         <span className="w-3 h-3 rounded-sm bg-foreground/10 inline-block border border-foreground/20"></span>
                         <span className="w-3 h-3 rounded-sm bg-accent/25 inline-block"></span>
                         <span className="w-3 h-3 rounded-sm bg-accent/55 inline-block"></span>
-                        <span className="w-3 h-3 rounded-sm bg-accent inline-block" style={{ boxShadow: "0 0 8px #22af80ff" }}></span>
+                        <span className="w-3 h-3 rounded-sm bg-accent inline-block" style={{ boxShadow: "0 0 8px #C9956Aff" }}></span>
                         <span>More</span>
                     </div>
                 </motion.div>

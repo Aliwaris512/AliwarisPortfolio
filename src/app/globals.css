@@ -3,18 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --background: #f0f0f0;
-  --foreground: #1a1a1a;
-  --accent: #00b395;
-  /* Darker teal for light mode */
+  --background: #FAF0EB;
+  --foreground: #210D0E;
+  --accent: #8B3A3A;
   --accent-fg: #ffffff;
 }
 
 .dark {
-  --background: #0b0b0b;
-  --foreground: #eaeaea;
-  --accent: #00ffcc;
-  --accent-fg: #000000;
+  --background: #210D0E;
+  --foreground: #F2E6E1;
+  --accent: #C9956A;
+  --accent-fg: #210D0E;
 }
 
 body {
@@ -49,13 +48,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #555;
-  /* Default thumb, overrides in dark mode if needed but grey works for both */
+  background: #BFA59A;
   border-radius: 5px;
 }
 
 .dark ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: #4A2A2D;
 }
 
 ::-webkit-scrollbar-thumb:hover {
