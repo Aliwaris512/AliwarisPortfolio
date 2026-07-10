@@ -16,6 +16,54 @@
   --accent-fg: #210D0E;
 }
 
+.palette-ruby {
+  --background: #2D0A0A;
+  --foreground: #F5E0E0;
+  --accent: #D44040;
+  --accent-fg: #FFFFFF;
+}
+.palette-ruby ::-webkit-scrollbar-thumb { background: #5A1A1A; }
+
+.palette-ocean {
+  --background: #0A1628;
+  --foreground: #E0EAF5;
+  --accent: #4090D4;
+  --accent-fg: #FFFFFF;
+}
+.palette-ocean ::-webkit-scrollbar-thumb { background: #1A3050; }
+
+.palette-forest {
+  --background: #0A2D1A;
+  --foreground: #E0F5E8;
+  --accent: #40B870;
+  --accent-fg: #FFFFFF;
+}
+.palette-forest ::-webkit-scrollbar-thumb { background: #1A4A2D; }
+
+.palette-amber {
+  --background: #2D2008;
+  --foreground: #F5EED8;
+  --accent: #D4A020;
+  --accent-fg: #1A1000;
+}
+.palette-amber ::-webkit-scrollbar-thumb { background: #4A3810; }
+
+.palette-violet {
+  --background: #1A0A2D;
+  --foreground: #EDE0F5;
+  --accent: #9040D4;
+  --accent-fg: #FFFFFF;
+}
+.palette-violet ::-webkit-scrollbar-thumb { background: #301A50; }
+
+.palette-sunset {
+  --background: #2D1008;
+  --foreground: #F5E4D8;
+  --accent: #D46A30;
+  --accent-fg: #FFFFFF;
+}
+.palette-sunset ::-webkit-scrollbar-thumb { background: #502810; }
+
 body {
   color: var(--foreground);
   background: var(--background);

@@ -6,6 +6,7 @@ import { Menu, X, Sun, Moon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import ColorPicker from "./ColorPicker";
 
 const navLinks = [
     { name: "Home", href: "#hero" },
@@ -93,25 +94,31 @@ export default function Navbar() {
                     ))}
 
                     {mounted && (
-                        <button
-                            onClick={toggleTheme}
-                            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                            className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors cursor-none"
-                        >
-                            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <ColorPicker />
+                            <button
+                                onClick={toggleTheme}
+                                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                                className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors cursor-none"
+                            >
+                                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                            </button>
+                        </div>
                     )}
                 </div>
 
                 <div className="flex items-center gap-4 md:hidden">
                     {mounted && (
-                        <button
-                            onClick={toggleTheme}
-                            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                            className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors"
-                        >
-                            {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                        </button>
+                        <div className="flex items-center gap-2">
+                            <ColorPicker />
+                            <button
+                                onClick={toggleTheme}
+                                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+                                className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors"
+                            >
+                                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+                            </button>
+                        </div>
                     )}
 
                     {/* Mobile Toggle */}
