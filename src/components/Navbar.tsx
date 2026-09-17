@@ -2,11 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import Link from "next/link";
-import { useTheme } from "next-themes";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import ColorPicker from "./ColorPicker";
 
 const navLinks = [
     { name: "Home", href: "#hero" },
@@ -20,54 +17,17 @@ const navLinks = [
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const { theme, setTheme } = useTheme();
-    const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
-
-    const toggleTheme = (event: React.MouseEvent) => {
-        const nextTheme = theme === "dark" ? "light" : "dark";
-
-        if (!document.startViewTransition) {
-            setTheme(nextTheme);
-            return;
-        }
-
-        const x = event.clientX;
-        const y = event.clientY;
-        const endRadius = Math.hypot(
-            Math.max(x, window.innerWidth - x),
-            Math.max(y, window.innerHeight - y)
-        );
-
-        const transition = document.startViewTransition(() => {
-            setTheme(nextTheme);
-        });
-
-        transition.ready.then(() => {
-            const clipPath = [
-                `circle(0px at ${x}px ${y}px)`,
-                `circle(${endRadius}px at ${x}px ${y}px)`,
-            ];
-            document.documentElement.animate(
-                {
-                    clipPath: clipPath,
-                },
-                {
-                    duration: 500,
-                    easing: "ease-out",
-                    pseudoElement: "::view-transition-new(root)",
-                }
-            );
-        });
-    };
 
     return (
         <nav
@@ -76,10 +36,10 @@ export default function Navbar() {
                 scrolled ? "bg-background/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
             )}
         >
-            <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-                <Link href="#" className="text-2xl font-bold text-accent tracking-tighter">
+            <div className="container mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
+                <a href="#hero" className="text-2xl font-bold text-accent tracking-tighter">
                     AW.
-                </Link>
+                </a>
 
                 {/* Desktop Menu */}
                 <div className="hidden md:flex items-center space-x-8">
@@ -92,42 +52,16 @@ export default function Navbar() {
                             {link.name}
                         </a>
                     ))}
-
-                    {mounted && (
-                        <div className="flex items-center gap-2">
-                            <ColorPicker />
-                            <button
-                                onClick={toggleTheme}
-                                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                                className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors cursor-none"
-                            >
-                                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                            </button>
-                        </div>
-                    )}
                 </div>
 
-                <div className="flex items-center gap-4 md:hidden">
-                    {mounted && (
-                        <div className="flex items-center gap-2">
-                            <ColorPicker />
-                            <button
-                                onClick={toggleTheme}
-                                aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-                                className="p-2 rounded-full bg-accent/10 hover:bg-accent/20 text-accent transition-colors"
-                            >
-                                {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-                            </button>
-                        </div>
-                    )}
-
-                    {/* Mobile Toggle */}
+                {/* Mobile Menu Controls */}
+                <div className="flex items-center md:hidden">
                     <button
-                        aria-label={isOpen ? "Close menu" : "Open menu"}
-                        className="text-foreground hover:text-accent transition-colors"
-                        onClick={() => setIsOpen(!isOpen)}
+                        onClick={() => setIsOpen((open) => !open)}
+                        aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-foreground/5 text-foreground/80 shadow-sm transition-colors hover:text-accent"
                     >
-                        {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isOpen ? <X size={18} /> : <Menu size={18} />}
                     </button>
                 </div>
             </div>
@@ -137,20 +71,22 @@ export default function Navbar() {
                 {isOpen && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "100vh" }}
+                        animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="md:hidden bg-background absolute top-20 left-0 w-full overflow-hidden flex flex-col items-center justify-center space-y-8"
+                        className="md:hidden border-t border-white/10 bg-background/95 backdrop-blur-md"
                     >
-                        {navLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                onClick={() => setIsOpen(false)}
-                                className="text-2xl font-medium text-gray-300 hover:text-accent transition-colors"
-                            >
-                                {link.name}
-                            </a>
-                        ))}
+                        <div className="container mx-auto flex max-h-[70vh] flex-col items-center justify-center space-y-6 px-4 py-8">
+                            {navLinks.map((link) => (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className="text-xl font-medium text-foreground/80 transition-colors hover:text-accent"
+                                >
+                                    {link.name}
+                                </a>
+                            ))}
+                        </div>
                     </motion.div>
                 )}
             </AnimatePresence>

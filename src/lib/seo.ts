@@ -1,48 +1,13 @@
-import type { Metadata } from "next";
-
 export const baseUrl = "https://aliwaris.netlify.app";
 
-export const siteMetadata: Metadata = {
+export const siteMetadata = {
     title: "Ali Waris | Associate Full Stack Developer",
     description: "Portfolio of Ali Waris, Associate Full Stack Developer specializing in React, Vue, Node.js, FastAPI, and scalable web applications.",
-    icons: {
-        icon: [
-            { url: "/favicon.ico", sizes: "32x32" },
-            { url: "/favicon.svg", type: "image/svg+xml" },
-            { url: "/favicon-32.png", sizes: "32x32", type: "image/png" },
-            { url: "/favicon-192.png", sizes: "192x192", type: "image/png" },
-            { url: "/favicon-512.png", sizes: "512x512", type: "image/png" },
-        ],
-        apple: [
-            { url: "/apple-touch-icon.png", sizes: "180x180" },
-        ],
-    },
-    manifest: "/site.webmanifest",
-    authors: [{ name: "Ali Waris" }],
+    siteName: "Ali Waris Portfolio",
+    url: baseUrl,
+    image: `${baseUrl}/favicon-512.png`,
+    author: "Ali Waris",
     keywords: ["Ali Waris", "Full Stack Developer", "React", "Vue", "Next.js", "Node.js", "FastAPI", "Portfolio", "Web Developer", "Software Engineer"],
-    openGraph: {
-        title: "Ali Waris | Associate Full Stack Developer",
-        description: "Portfolio of Ali Waris, Associate Full Stack Developer specializing in React, Vue, Node.js, FastAPI, and scalable web applications.",
-        url: baseUrl,
-        siteName: "Ali Waris Portfolio",
-        locale: "en_US",
-        type: "website",
-        images: [
-            {
-                url: `${baseUrl}/favicon-512.png`,
-                width: 512,
-                height: 512,
-                alt: "Ali Waris",
-            },
-        ],
-    },
-    twitter: {
-        card: "summary",
-        title: "Ali Waris | Associate Full Stack Developer",
-        description: "Portfolio of Ali Waris, Associate Full Stack Developer specializing in React, Vue, Node.js, FastAPI, and scalable web applications.",
-        images: [`${baseUrl}/favicon-512.png`],
-    },
-    metadataBase: new URL(baseUrl),
 };
 
 export const siteJsonLd = {

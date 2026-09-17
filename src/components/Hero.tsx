@@ -1,97 +1,151 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { useLayoutEffect, useRef } from "react";
+import gsap from "gsap";
 
 export default function Hero() {
-    return (
-        <section
-            id="hero"
-            className="h-screen w-full flex flex-col items-center justify-center relative overflow-hidden pt-20"
-        >
-            <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-accent/5 via-background to-background opacity-50" />
+  const heroRef = useRef<HTMLDivElement>(null);
 
-            {/* Animated Blobs */}
-            <motion.div
-                animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.5, 0.3],
-                    x: [0, 50, 0]
-                }}
-                transition={{ duration: 8, repeat: Infinity }}
-                className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-[100px] -z-10"
-            />
-            <motion.div
-                animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.2, 0.4, 0.2],
-                    x: [0, -50, 0]
-                }}
-                transition={{ duration: 10, repeat: Infinity, delay: 1 }}
-                className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] -z-10"
-            />
+  useLayoutEffect(() => {
+    if (!heroRef.current) return;
 
-            <div className="container mx-auto px-6 text-center z-10">
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-accent font-medium tracking-wide mb-4 text-lg"
-                >
-                    Hi, I&apos;m Ali Waris
-                </motion.p>
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "power4.out",
+        },
+      });
 
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-5xl sm:text-7xl md:text-8xl font-bold mb-6 tracking-tight text-foreground"
-                >
-                    Full
-                    <span className="block text-foreground/50">Stack Developer</span>
-                </motion.h1>
+      if (reduceMotion) {
+        gsap.set(
+          ".hero-nav, .hero-small-text, .hero-name, .hero-person, .hero-line, .hero-bottom",
+          { autoAlpha: 1 }
+        );
+        return;
+      }
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.6 }}
-                    className="text-xl md:text-2xl text-foreground/60 max-w-2xl mx-auto mb-10"
-                >
-                    Building scalable, high-performance web applications with React, Vue, Node, and Python.
-                </motion.p>
+      tl.from(".hero-nav", {
+        y: -28,
+        opacity: 0,
+        duration: 0.8,
+      })
+        .from(
+          ".hero-small-text",
+          {
+            y: 18,
+            opacity: 0,
+            duration: 0.6,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".hero-name",
+          {
+            scale: 1.2,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power4.out",
+          },
+          "-=0.2"
+        )
+        .from(
+          ".hero-person",
+          {
+            y: 130,
+            opacity: 0,
+            duration: 1.1,
+            ease: "power3.out",
+          },
+          "-=0.8"
+        )
+        .from(
+          ".hero-line",
+          {
+            scaleX: 0,
+            transformOrigin: "left",
+            duration: 0.8,
+          },
+          "-=0.7"
+        )
+        .from(
+          ".hero-bottom",
+          {
+            y: 24,
+            opacity: 0,
+            duration: 0.65,
+          },
+          "-=0.4"
+        );
+    }, heroRef);
 
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.8 }}
-                    className="flex flex-col sm:flex-row items-center justify-center gap-4"
-                >
-                    <a
-                        href="#projects"
-                        className="inline-block border border-accent text-accent px-8 py-3 rounded-full hover:bg-accent hover:text-background transition-all duration-300 font-medium text-lg"
-                    >
-                        View My Work
-                    </a>
-                    <a
-                        href="/cv.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        download="Ali_Waris_CV.pdf"
-                        className="inline-block bg-accent text-background border border-accent px-8 py-3 rounded-full hover:bg-transparent hover:text-accent transition-all duration-300 font-medium text-lg shadow-lg hover:shadow-accent/20"
-                    >
-                        Download CV
-                    </a>
-                </motion.div>
-            </div>
+    return () => ctx.revert();
+  }, []);
 
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 1 }}
-                className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce"
-            >
-                <ArrowDown className="text-foreground/50" size={32} />
-            </motion.div>
-        </section>
-    );
+  return (
+    <section
+      id="hero"
+      ref={heroRef}
+      className="hero-shell relative h-[100vh] h-[100svh] w-full overflow-hidden bg-black text-white"
+    >
+      <div className="hero-video-shell absolute inset-0 overflow-hidden">
+        <video
+          className="hero-video absolute inset-0 h-full w-full object-cover object-center"
+          src="/videos/hero-loop.mp4"
+          poster="/moodflick.png"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          aria-label="Cinematic portfolio video background"
+          onError={(event) => {
+            const target = event.currentTarget;
+            target.style.display = "none";
+          }}
+        />
+        {/* <div className="hero-video-overlay absolute inset-0" /> */}
+      </div>
+
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700/15 blur-[140px] md:h-[38rem] md:w-[38rem]" />
+
+      <div className="relative z-10 flex min-h-[100vh] min-h-[100svh] flex-col items-center justify-center px-4">
+        <div className="hero-small-text absolute top-[18%] text-center md:top-[20%]">
+          <div className="mx-auto mt-3 flex items-center justify-center gap-2">
+            <span className="h-1 w-1 rounded-full bg-red-500" />
+            <span className="h-1 w-1 rounded-full bg-red-500" />
+            <span className="h-1 w-1 rounded-full bg-red-500" />
+          </div>
+        </div>
+
+        <div className="hero-line absolute bottom-[18%] left-[8%] right-[8%] h-px bg-white/15 md:left-[10%] md:right-[10%]" />
+
+        <div className="hero-bottom absolute inset-x-0 bottom-[7%] z-20 flex items-end justify-between gap-4 px-4 md:px-12">
+          <div>
+            <p className="text-[8px] uppercase tracking-[0.32em] text-white/40 md:text-[9px]">
+              Full Stack Developer
+            </p>    
+            <p className="mt-1 text-[10px] tracking-[0.18em] text-white/75 md:text-xs md:tracking-[0.22em]">
+              React · Next.js · Node.js
+            </p>
+          </div>
+
+          <div className="text-right">
+            <p className="text-[8px] uppercase tracking-[0.32em] text-white/40 md:text-[9px]">
+              Scroll to explore
+            </p>
+            <div className="mx-auto mt-3 h-6 w-px bg-white/50 md:h-8" />
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-4 left-4 z-20 text-[7px] uppercase tracking-[0.3em] text-white/35 md:bottom-5 md:left-5 md:text-[8px]">
+        © 2026
+      </div>
+
+      <div className="absolute bottom-4 right-4 z-20 text-[7px] uppercase tracking-[0.3em] text-white/35 md:bottom-5 md:right-5 md:text-[8px]">
+        Portfolio / 01
+      </div>
+    </section>
+  );
 }

@@ -64,25 +64,70 @@
 }
 .palette-sunset ::-webkit-scrollbar-thumb { background: #502810; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
   cursor: none;
-  /* Hide default cursor */
 }
 
-@media (max-width: 768px) {
+@media (pointer: fine) {
+  body {
+    cursor: none;
+  }
+}
+
+@media (pointer: coarse), (max-width: 768px) {
   body {
     cursor: auto;
-    /* Show default cursor on mobile devices */
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+.hero-shell {
+  background: linear-gradient(180deg, rgba(8, 4, 5, 0.7), rgba(8, 4, 5, 0.82));
+}
+
+.hero-video-shell {
+  background: url('/moodflick.png') center/cover no-repeat;
+}
+
+.hero-video {
+  filter: brightness(0.7) contrast(1.05);
+  transform: scale(1.02);
+}
+
+.hero-video-overlay {
+  background: linear-gradient(180deg, rgba(10, 7, 8, 0.15), rgba(10, 7, 8, 0.5));
+}
+
+.hero-name,
+.hero-nav,
+.hero-small-text,
+.hero-person,
+.hero-line,
+.hero-bottom {
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name,
+  .hero-nav,
+  .hero-small-text,
+  .hero-person,
+  .hero-line,
+  .hero-bottom {
+    transition: none !important;
   }
 }
 
