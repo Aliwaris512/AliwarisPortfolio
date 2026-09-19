@@ -1,10 +1,11 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [videoReady, setVideoReady] = useState(false);
 
   useLayoutEffect(() => {
     if (!heroRef.current) return;
@@ -88,9 +89,9 @@ export default function Hero() {
       ref={heroRef}
       className="hero-shell relative h-[100vh] h-[100svh] w-full overflow-hidden bg-black text-white"
     >
-      <div className="hero-video-shell absolute inset-0 overflow-hidden">
+      <div className="hero-video-shell absolute inset-0 overflow-hidden bg-black">
         <video
-          className="hero-video absolute inset-0 h-full w-full object-cover object-center"
+          className={`hero-video absolute inset-0 h-full w-full object-cover object-center transition-opacity duration-500 ${videoReady ? "opacity-100" : "opacity-0"}`}
           src="/videos/hero-loop.mp4"
           autoPlay
           muted
@@ -98,12 +99,13 @@ export default function Hero() {
           playsInline
           preload="metadata"
           aria-label="Cinematic portfolio video background"
+          onCanPlay={() => setVideoReady(true)}
+          onLoadedData={() => setVideoReady(true)}
           onError={(event) => {
             const target = event.currentTarget;
             target.style.display = "none";
           }}
         />
-        {/* <div className="hero-video-overlay absolute inset-0" /> */}
       </div>
 
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700/15 blur-[140px] md:h-[38rem] md:w-[38rem]" />
