@@ -92,7 +92,6 @@ export default function Hero() {
         <video
           className="hero-video absolute inset-0 h-full w-full object-cover object-center"
           src="/videos/hero-loop.mp4"
-          poster="/moodflick.png"
           autoPlay
           muted
           loop
