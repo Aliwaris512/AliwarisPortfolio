@@ -111,14 +111,7 @@ export default function Hero() {
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-red-700/15 blur-[140px] md:h-[38rem] md:w-[38rem]" />
 
       <div className="relative z-10 flex min-h-[100vh] min-h-[100svh] flex-col items-center justify-center px-4">
-        <div className="hero-small-text absolute top-[18%] text-center md:top-[20%]">
-          <div className="mx-auto mt-3 flex items-center justify-center gap-2">
-            <span className="h-1 w-1 rounded-full bg-red-500" />
-            <span className="h-1 w-1 rounded-full bg-red-500" />
-            <span className="h-1 w-1 rounded-full bg-red-500" />
-          </div>
-        </div>
-
+        
         <div className="hero-line absolute bottom-[18%] left-[8%] right-[8%] h-px bg-white/15 md:left-[10%] md:right-[10%]" />
 
         <div className="hero-bottom absolute inset-x-0 bottom-[7%] z-20 flex items-end justify-between gap-4 px-4 md:px-12">
