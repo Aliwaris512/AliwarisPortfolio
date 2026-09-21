@@ -66,6 +66,12 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
+}
+
+section,
+[id] {
+  scroll-margin-top: 96px;
 }
 
 body {
@@ -76,15 +82,29 @@ body {
   cursor: none;
 }
 
-@media (pointer: fine) {
-  body {
-    cursor: none;
+@media (max-width: 768px) {
+  body,
+  a,
+  button,
+  [data-cursor-hover],
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: auto !important;
   }
 }
 
-@media (pointer: coarse), (max-width: 768px) {
-  body {
-    cursor: auto;
+@media (pointer: coarse) {
+  body,
+  a,
+  button,
+  [data-cursor-hover],
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: auto !important;
   }
 }
 

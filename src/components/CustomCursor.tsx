@@ -9,9 +9,19 @@ export default function CustomCursor() {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        const supportsPointerFine = window.matchMedia("(pointer: fine)").matches;
-        if (!supportsPointerFine) {
-            setIsVisible(false);
+        const shouldUseCustomCursor = () => {
+            const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+            return window.innerWidth > 768 && !coarsePointer;
+        };
+
+        const setCursorMode = () => {
+            const enabled = shouldUseCustomCursor();
+            document.body.style.cursor = enabled ? "none" : "auto";
+            setIsVisible(enabled);
+        };
+
+        if (!shouldUseCustomCursor()) {
+            setCursorMode();
             return;
         }
 
@@ -22,6 +32,8 @@ export default function CustomCursor() {
 
         const handleMouseEnter = () => setIsHovering(true);
         const handleMouseLeave = () => setIsHovering(false);
+        const handleMouseLeaveWindow = () => setIsVisible(false);
+        const handleMouseEnterWindow = () => setIsVisible(true);
 
         const trackedElements = document.querySelectorAll("a, button, [data-cursor-hover]");
         trackedElements.forEach((element) => {
@@ -30,8 +42,9 @@ export default function CustomCursor() {
         });
 
         window.addEventListener("mousemove", updatePosition);
-        window.addEventListener("mouseleave", () => setIsVisible(false));
-        window.addEventListener("mouseenter", () => setIsVisible(true));
+        window.addEventListener("mouseleave", handleMouseLeaveWindow);
+        window.addEventListener("mouseenter", handleMouseEnterWindow);
+        window.addEventListener("resize", setCursorMode);
 
         const observer = new MutationObserver(() => {
             const elements = document.querySelectorAll("a, button, [data-cursor-hover]");
@@ -44,9 +57,11 @@ export default function CustomCursor() {
         observer.observe(document.body, { childList: true, subtree: true });
 
         return () => {
+            document.body.style.cursor = "auto";
             window.removeEventListener("mousemove", updatePosition);
-            window.removeEventListener("mouseleave", () => setIsVisible(false));
-            window.removeEventListener("mouseenter", () => setIsVisible(true));
+            window.removeEventListener("mouseleave", handleMouseLeaveWindow);
+            window.removeEventListener("mouseenter", handleMouseEnterWindow);
+            window.removeEventListener("resize", setCursorMode);
             observer.disconnect();
         };
     }, []);

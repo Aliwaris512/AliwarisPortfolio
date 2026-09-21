@@ -25,15 +25,35 @@ export default function Navbar() {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
         };
+
+        const handleResize = () => {
+            if (window.innerWidth >= 768) {
+                setIsOpen(false);
+            }
+        };
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") {
+                setIsOpen(false);
+            }
+        };
+
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
+            window.removeEventListener("keydown", handleKeyDown);
+        };
     }, []);
 
     return (
         <nav
             className={cn(
                 "fixed top-0 left-0 w-full z-50 transition-all duration-300",
-                scrolled ? "bg-background/80 backdrop-blur-md border-b border-white/10" : "bg-transparent"
+                scrolled ? "bg-background/80 backdrop-blur-md" : "bg-transparent"
             )}
         >
             <div className="container mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
@@ -57,9 +77,12 @@ export default function Navbar() {
                 {/* Mobile Menu Controls */}
                 <div className="flex items-center md:hidden">
                     <button
+                        type="button"
                         onClick={() => setIsOpen((open) => !open)}
                         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
-                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-foreground/5 text-foreground/80 shadow-sm transition-colors hover:text-accent"
+                        aria-expanded={isOpen}
+                        aria-controls="mobile-navigation"
+                        className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-foreground/5 text-foreground/80 shadow-sm transition-colors hover:text-accent active:scale-95"
                     >
                         {isOpen ? <X size={18} /> : <Menu size={18} />}
                     </button>
@@ -70,6 +93,7 @@ export default function Navbar() {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
+                        id="mobile-navigation"
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}

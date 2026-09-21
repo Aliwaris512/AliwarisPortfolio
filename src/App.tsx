@@ -10,7 +10,6 @@ import Loader from "@/components/Loader";
 import GitHubStats from "@/components/GitHubStats";
 import JsonLd from "@/components/JsonLd";
 import CustomCursor from "@/components/CustomCursor";
-import TechStack from "@/components/TechStack";
 import { siteJsonLd } from "@/lib/seo";
 
 export default function App() {
@@ -34,7 +33,6 @@ export default function App() {
         <div className={`transition-opacity duration-700 ${loading ? 'opacity-0' : 'opacity-100'}`}>
           <Navbar />
           <Hero />
-          <TechStack />
           <About />
           <Projects />
           <GitHubStats />
